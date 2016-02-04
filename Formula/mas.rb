@@ -10,8 +10,9 @@ class Mas < Formula
   end
 
   def install
-    # rbenv support
+    # rbenv and rvm support
     ENV.prepend_path "PATH", "/usr/local/var/rbenv/shims"
+    ENV.prepend_path "PATH", "~/.rvm/bin"
 
     system "script/bootstrap"
     system "script/build"
