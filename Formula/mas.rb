@@ -6,7 +6,7 @@ class Mas < Formula
   sha256 "2b4e799102bbbcac581b4f9e5a077a823f66de1022be8dd8d12dd15ce02d315d"
 
   head do
-    url "https://github.com/cybertk/mas.git", :branch => "login"
+    url "https://github.com/cybertk/mas.git", :branch => "master"
   end
 
   def install
