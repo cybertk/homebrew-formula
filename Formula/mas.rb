@@ -10,9 +10,17 @@ class Mas < Formula
   end
 
   def install
-    # rbenv and rvm support
-    ENV.prepend_path "PATH", "/usr/local/var/rbenv/shims"
-    ENV.prepend_path "PATH", "~/.rvm/bin"
+    # rbenv support
+    if ENV["RBENV_ROOT"]
+      ENV.prepend_path "PATH", ENV["RBENV_ROOT"] + "/shims"
+    end
+
+    # rvm support
+    if ENV["rvm_path"]
+      ENV["GEM_HOME"] = ENV["rvm_path"] + "/gems/" + ENV["RUBY_VERSION"]
+      ENV.prepend_path "PATH", ENV["GEM_HOME"] + "/bin"
+      ENV.prepend_path "PATH", ENV["MY_RUBY_HOME"] + "/bin"
+    end
 
     system "script/bootstrap"
     system "script/build"
