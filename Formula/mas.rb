@@ -12,12 +12,17 @@ class Mas < Formula
   def install
     # rbenv support
     if ENV["RBENV_ROOT"]
+      puts "rbenv detected"
+
       ENV.prepend_path "PATH", ENV["RBENV_ROOT"] + "/shims"
     end
 
     # rvm support
     if ENV["rvm_path"]
+      puts "rvm detected"
+
       ENV["GEM_HOME"] = ENV["rvm_path"] + "/gems/" + ENV["RUBY_VERSION"]
+      ENV["MY_RUBY_HOME"] = ENV["rvm_path"] + "/rubies/" + ENV["RUBY_VERSION"]
       ENV.prepend_path "PATH", ENV["GEM_HOME"] + "/bin"
       ENV.prepend_path "PATH", ENV["MY_RUBY_HOME"] + "/bin"
     end
